@@ -3,7 +3,6 @@
     v-model:selection="deleteTargetList"
     v-model:filters="filters"
     :value="list"
-    tableStyle="max-width: 50rem"
     filterDisplay="menu"
     :globalFilterFields="['name', 'website']"
   >
@@ -51,14 +50,18 @@
     </Column>
     <Column field="username" header="Username" filterField="username">
       <template #body="slotProps">
-        <copy-btn :secret-value="slotProps.data.username" />
-        {{ slotProps.data.username }}
+        <div class="flex items-center gap-2">
+          <copy-btn :secret-value="slotProps.data.username" />
+          {{ slotProps.data.username }}
+        </div>
       </template>
     </Column>
     <Column header="Secret">
       <template #body="slotProps">
-        <CopyBtn :secret-value="slotProps.data.secret" />
-        <span>••••</span>
+        <div class="flex items-center gap-2">
+          <CopyBtn :secret-value="slotProps.data.secret" />
+          <span>••••</span>
+        </div>
       </template>
     </Column>
     <Column header="Website">
