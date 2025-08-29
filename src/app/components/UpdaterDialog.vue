@@ -6,8 +6,11 @@
     :style="{ width: '25rem' }"
   >
     <div class="ml-5">
-      <p class="m-0">アプリケーションが更新できます</p>
-      <p v-if="pending">{{ `${downloaded} / ${contentLength}` }}</p>
+      <p v-if="!pending" class="m-0">アプリケーションが更新できます</p>
+      <p v-else class="m-0">
+        アプリケーション更新中
+        <span class="ml-3">{{ `${downloaded} / ${contentLength}` }}</span>
+      </p>
     </div>
     <div class="flex justify-end gap-2 mt-5">
       <Button
@@ -20,10 +23,8 @@
       ></Button>
       <Button
         type="button"
-        label="Delete"
-        severity="danger"
+        label="Update"
         size="small"
-        icon="pi pi-trash"
         :loading="pending"
         @click="updateApp"
       ></Button>

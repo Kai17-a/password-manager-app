@@ -93,7 +93,7 @@ import UpdaterDialog from "./components/UpdaterDialog.vue";
 const filters = ref();
 const list: Ref<Data[]> = ref([]);
 
-const appUpdate: Ref<Update | null> = ref(null)
+const appUpdate: Ref<Update | null> = ref(null);
 const updateAppDialog: Ref<boolean> = ref(false);
 
 onMounted(async () => {
@@ -105,7 +105,7 @@ onMounted(async () => {
 
 onUnmounted(async () => {
   await getData();
-})
+});
 
 const getData = async () => {
   const db = await Database.load("sqlite:password-manager-app.db");

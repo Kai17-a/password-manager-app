@@ -1,5 +1,5 @@
 use tauri_plugin_sql::{Migration, MigrationKind};
-use tauri_plugin_updater::UpdaterExt;
+// use tauri_plugin_updater::UpdaterExt;
 
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
