@@ -3,11 +3,14 @@ name: Release
 on:
   push:
     tags:
-      - "v*.*.*"   # 例: v1.0.0
+      - "v*.*.*" # 例: v1.0.0
 
 jobs:
   build:
     runs-on: windows-latest
+    env:
+      API_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+      API_URL: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
 
     steps:
       # コードを取得
@@ -58,9 +61,6 @@ jobs:
       # Tauri build
       - name: Build Tauri App
         run: bun run tauri build
-        env:
-          API_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-          API_URL: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
 
       # Release にアップロード
       - name: Upload to Release
