@@ -78,6 +78,8 @@
     v-model:dialog="deleteDialog"
     v-model:data="deleteTargetList"
   ></DeleteDialog>
+
+  <UpdaterDialog :dialog="updateAppDialog" :update="appUpdate" />
 </template>
 
 <script lang="ts" setup>
@@ -85,13 +87,25 @@ import { FilterMatchMode, FilterOperator } from "@primevue/core/api";
 import "primeicons/primeicons.css";
 import type { Data } from "~/types/data";
 import Database from "@tauri-apps/plugin-sql";
+import { check, Update } from "@tauri-apps/plugin-updater";
+import UpdaterDialog from "./components/UpdaterDialog.vue";
 
 const filters = ref();
 const list: Ref<Data[]> = ref([]);
 
+const appUpdate: Ref<Update | null> = ref(null)
+const updateAppDialog: Ref<boolean> = ref(false);
+
 onMounted(async () => {
-  await getData();
+  appUpdate.value = await check();
+  if (appUpdate.value) {
+    updateAppDialog.value = true;
+  }
 });
+
+onUnmounted(async () => {
+  await getData();
+})
 
 const getData = async () => {
   const db = await Database.load("sqlite:password-manager-app.db");

@@ -15,6 +15,7 @@
     "@primevue/nuxt-module": "^4.3.7",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
+    "@tauri-apps/plugin-process": "~2",
     "@tauri-apps/plugin-sql": "~2",
     "@tauri-apps/plugin-updater": "~2",
     "primeicons": "^7.0.0",
