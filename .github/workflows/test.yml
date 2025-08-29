@@ -1,0 +1,21 @@
+name: Show Secrets as Env
+
+# 手動で実行可能
+on:
+  workflow_dispatch:
+
+jobs:
+  show-env:
+    runs-on: windows-latest
+    env:
+      TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+      TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+
+
+    steps:
+      - name: Show Environment Variables
+        run: |
+          echo "API_KEY: $API_KEY"
+          echo "API_URL: $API_URL"
+          # 秘密鍵は長いので先頭10文字だけ表示
+          echo "TAURI_SIGNING_PRIVATE_KEY (head 10 chars): ${TAURI_SIGNING_PRIVATE_KEY:0:10}"
