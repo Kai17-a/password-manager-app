@@ -79,7 +79,7 @@
     v-model:data="deleteTargetList"
   ></DeleteDialog>
 
-  <UpdaterDialog :dialog="updateAppDialog" :update="appUpdate" />
+  <!-- <UpdaterDialog :dialog="updateAppDialog" :update="appUpdate" /> -->
 </template>
 
 <script lang="ts" setup>
@@ -93,17 +93,14 @@ import UpdaterDialog from "./components/UpdaterDialog.vue";
 const filters = ref();
 const list: Ref<Data[]> = ref([]);
 
-const appUpdate: Ref<Update | null> = ref(null);
-const updateAppDialog: Ref<boolean> = ref(false);
+// const appUpdate: Ref<Update | null> = ref(null);
+// const updateAppDialog: Ref<boolean> = ref(false);
 
 onMounted(async () => {
-  appUpdate.value = await check();
-  if (appUpdate.value) {
-    updateAppDialog.value = true;
-  }
-});
-
-onUnmounted(async () => {
+  // appUpdate.value = await check();
+  // if (appUpdate.value) {
+  //   updateAppDialog.value = true;
+  // }
   await getData();
 });
 
