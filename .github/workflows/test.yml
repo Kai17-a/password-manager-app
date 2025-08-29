@@ -15,7 +15,5 @@ jobs:
     steps:
       - name: Show Environment Variables
         run: |
-          echo "API_KEY: $API_KEY"
-          echo "API_URL: $API_URL"
-          # 秘密鍵は長いので先頭10文字だけ表示
-          echo "TAURI_SIGNING_PRIVATE_KEY (head 10 chars): ${TAURI_SIGNING_PRIVATE_KEY:0:10}"
+          echo "TAURI_SIGNING_PRIVATE_KEY: $TAURI_SIGNING_PRIVATE_KEY"
+          echo "TAURI_SIGNING_PRIVATE_KEY: $TAURI_SIGNING_PRIVATE_KEY"
